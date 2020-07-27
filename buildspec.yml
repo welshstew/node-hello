@@ -4,18 +4,18 @@ phases:
   install:
     runtime-versions:
       nodejs: 12
+  pre_build:
+    commands:
+      - echo logging in to AWS ECR...
+      - $(aws ecr get-login --no-include-email --region eu-west-2)
   build:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code
       - npm run test
+      - docker build -t 270848561385.dkr.ecr.eu-west-2.amazonaws.com/node-hello:latest .
   post_build:
     commands:
       - echo Build completed on `date`
-# Include only the files required for your application to run.
-artifacts:
-  files:
-    - src/index.js
-    - src/app.js
-    - package.json
-    - node_modules/**/*
+      - echo push latest Docker images to ECR...
+      - docker push 270848561385.dkr.ecr.eu-west-2.amazonaws.com/node-hello:latest
