@@ -8,7 +8,7 @@ RUN npm install
 # Copy app contents
 COPY . .
 
-# App runs on port 3000
+# App runs on port 8000
 EXPOSE 8000
 
 # Start the app
