@@ -13,9 +13,9 @@ phases:
       - echo Build started on `date`
       - echo Compiling the Node.js code
       - npm run test
-      - docker build -t 270848561385.dkr.ecr.eu-west-2.amazonaws.com/node-hello:latest .
+      - docker build -t 780480840318.dkr.ecr.eu-west-2.amazonaws.com/node-hello:latest .
   post_build:
     commands:
       - echo Build completed on `date`
       - echo push latest Docker images to ECR...
-      - docker push 270848561385.dkr.ecr.eu-west-2.amazonaws.com/node-hello:latest
+      - docker push 780480840318.dkr.ecr.eu-west-2.amazonaws.com/node-hello:latest
